@@ -1,0 +1,68 @@
+variable,lower,upper,distribution,unit,description,remarks,source
+water_price_p,0.00035,0.0005,posnorm,£/l,Cost of irrigation water [£/l],calculated based on information in FarmingForum 38 to 45 punds per acre per inch,https://thefarmingforum.co.uk/index.php?threads/price-for-irrigating.344776/
+labour_costs_p,8.6,14,posnorm,£/h,Cost of labour [£/h],,https://www.gov.uk/government/publications/the-national-minimum-wage-in-2024
+winter_wheat_management_p,561.5,1166.5,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost [£/ha]","complicated calculation, used savillis source and reduction in fert/pesticide costs as per EU website; then subtracted labour costs from resulting total to determine final cost",https://www.savills.co.uk/research_articles/229130/329236-0 https://ahdb.org.uk/news/how-do-uk-wheat-overhead-costs-stack-up-internationally-grain-market-daily https://agriculture.ec.europa.eu/system/files/2023-04/agri-market-brief-20-organic-farming-eu_en.pdf  
+winter_wheat_labour_p,3.45,6.75,posnorm,h/ha,Labour hours for annual  wheat management [h/ha],,
+spring_barley_management_p,921.38,1535.63,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost [£/ha]",plus minus 25% of source,https://goldcrop.ie/wp-content/uploads/2024/06/Goldcrop-Arable-Seeds-Variety-Catalogue-24.pdf
+spring_barley_labour_p,3.1,6.13,posnorm,h/ha,Labour hours for annual  barley management [h/ha],,
+herbal_ley_management_p,473.7,643.7,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost (sowing only)  [£/ha]","assumed all but seeds from wheat costs for now, machine costs minus 150 due to no costs for spraying, harvesting",https://www.cotswoldseeds.com/seeds/17/herbal-leys  https://www.savills.co.uk/research_articles/229130/329236-0
+herbal_ley_labour_p,1,3,posnorm,h/ha,Labour hours for annual  ley management (excludes livestock related labour) [h/ha],from Tom and experts,
+herbal_effect_p,1.05,1.1,posnorm,%,"Beneficial effect on subsequent crops due to soil ammending effects of ley (N fixing, soil aggregation, water retention) [%]",,
+summer_beans_management_p,878.75,1464.59,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost [£/ha]",plus minus 25% of source,https://goldcrop.ie/wp-content/uploads/2024/06/Goldcrop-Arable-Seeds-Variety-Catalogue-24.pdf
+summer_beans_labour_p,5.7,8.5,posnorm,h/ha,Labour hours for annual  bean management [h/ha],,
+summer_beans_effect_p,1.02,1.07,posnorm,%,Beneficial effect on subsequent crops due to soil ammending effects of ley (N fixing)  [%],,
+winter_oats_management_p,878.75,1464.59,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost [£/ha]",could not find source - used bean metrics,https://goldcrop.ie/wp-content/uploads/2024/06/Goldcrop-Arable-Seeds-Variety-Catalogue-24.pdf
+winter_oats_labour_p,5.7,8.5,posnorm,h/ha,Labour hours for annual  oat management [h/ha],,
+winter_cover_crop_management_p,61.5,149.5,posnorm,£/ha,"Cost of seed, fertiliser, pesticide, insurance, fixed+variable machine cost (sowing only) [£/ha]","old data, increase by 50%",https://thefarmingforum.co.uk/index.php?threads/true-cost-of-cover-cropping.157888/
+winter_cover_crop_dry_matter_p,0.2,0.25,posnorm,%,Average dry matter content of cover crop mix [%],,
+winter_cover_crop_labour_p,1,3,posnorm,h/ha,Labour associated with establishing and maintaining cover crop [h/ha],,
+cover_crop_grazing_labour_p,1,2.5,posnorm,h/ha,Labour associatd with using cover crop for grazing purposes [h/ha],,
+daily_dry_matter_intake_cattle_p,0.01,0.02,posnorm,t/animal,amount of dry matter consumed by cattle daily,,
+daily_weight_gain_pasture_cattle_p,0.0008,0.0012,posnorm,t/animal,amount of dry matter consumed by cattle daily,,
+rowan_yield_first_p,4,5,posnorm,%,percentage of expected max. harvest in first year of harvest,https://www.lwf.bayern.de/mam/cms04/wissenstransfer/dateien/w17_die_vogelbeere-ein_obstbaum.pdf,
+rowan_yield_second_p,30,80,posnorm,%,percentage of expected max. harvest in second yield/development stage,https://www.lwf.bayern.de/mam/cms04/wissenstransfer/dateien/w17_die_vogelbeere-ein_obstbaum.pdf,
+time_to_first_rowan_c,3,3,const,a,years to first harvest,"https://www.lwf.bayern.de/mam/cms04/wissenstransfer/dateien/w17_die_vogelbeere-ein_obstbaum.pdf , F. Ganswind (2024) ",
+time_to_second_rowan_p,8,12,posnorm,a,years to second harvest,https://www.lwf.bayern.de/mam/cms04/wissenstransfer/dateien/w17_die_vogelbeere-ein_obstbaum.pdf,
+rowan_harvest_cost_p,0.04,0.1,posnorm,h/kg,labour hours to harvest rowan,https://www.lwf.bayern.de/mam/cms04/wissenstransfer/dateien/w17_die_vogelbeere-ein_obstbaum.pdf,
+hazel_yield_first_p,10,15,posnorm,%,First yield [% of max harvest],,"no data found, esitmate"
+hazel_yield_second_p,95,100,posnorm,%,Second stage yield [% of max harvest],,"https://www.permaculture.co.uk/articles/the-essential-guide-to-hazel/#:~:text=Hazelnut%20trees%20can%20produce%20a,production%20from%20years%2010%2D15."
+time_to_first_hazel_c,6,6,const,year number,Year in which first harvest is expected,,http://www.calu.bangor.ac.uk/Technical%20leaflets/050402Cobnutsandwalnuts.pdf
+time_to_second_hazel_p,10,15,posnorm,year number,Year in which second  yield stage is estimated for,,"https://www.permaculture.co.uk/articles/the-essential-guide-to-hazel/#:~:text=Hazelnut%20trees%20can%20produce%20a,production%20from%20years%2010%2D15."
+hazel_harvest_cost_p,0.01,0.1,posnorm,h/kg,labour hours to harvest,,"https://www.permaculture.co.uk/articles/the-essential-guide-to-hazel/#:~:text=Hazelnut%20trees%20can%20produce%20a,production%20from%20years%2010%2D15."
+damson_yield_first_p,0.5,1.5,posnorm,%,First yield [% of max harvest],,
+damson_yield_second_p,60,80,posnorm,%,Second stage yield [% of max harvest],,https://www.rootsplants.co.uk/products/merryweather-damson-tree
+time_to_first_damson_c,3,3,const,year number,Year in which first harvest is expected,,
+time_to_second_damson_p,10,15,posnorm,year number,Year in which second  yield stage is estimated for,,https://www.rootsplants.co.uk/products/merryweather-damson-tree
+damson_harvest_cost_p,0.01,0.1,posnorm,h/kg,labour hours to harvest,,
+time_to_first_timber_c,3,3,const,year in number,Year in which first harvest of timber is expected,,
+timber_harvest_p,110,135,posnorm,h/ha,Labour hours for harvesting timber and chipping [h/ha],,https://www.fva-bw.de/fileadmin/publikationen/sonstiges/kup_erntetechniken_fva.pdf
+pc_ground_water_recharge_p,0.06,1,posnorm,£/ha/yr,price of groundwater (£ ha-1 a-1),Kay et al 2019,
+pc_soil_loss_p,0.9,23,posnorm,£/ha/yr,price of soil loss and environmental cost of loss disservice,Kay et al 2019,
+C_sequeter_max_p,75,90,posnorm,t C/ha/yr,from Marcos's model,,
+time_to_first_C_sequester_c,10,10,const,year in number,First Year in which the C. sequestartion sold for credits,,
+time_to_second_C_sequester_c,15,15,const,year in number,Second Year in which the C. sequestartion sold for credits,,
+C_sequester_first_p,2,5,posnorm,%,percentage of the maximum sequestration that is attained in the first year (or other time unit),,
+C_sequester_second_p,6,15,posnorm,%,percentage of the maximum sequesteration that is attained in the second year (or other time unit),,
+yield_reduc_max_p,0.1,0.2,posnorm,%,10 to 20% based on smaller shrubby shading effects,,
+time_to_first_reduction_c,3,3,const,year in number,Year in which the effect of tree on crop starts first,,
+time_to_second_reduction_c,6,6,const,year in number,Year in which the effect of tree on crop starts second,,
+perc_max_first_reduction_p,10,20,posnorm,%,percentage of the maximum yield reduction in the first year (or other time unit),,
+perc_max_second_reduction_p,20,30,posnorm,%,percentage of the maximum yield reduction in the second year (or other time unit),,
+yield_increase_max_p,0.05,0.14,posnorm,%,increase in pasture productivity due to wind protection ,,https://doi.org/10.2307/240275
+time_to_first_increase_c,3,3,const,year in number,Year in which the effect of tree on crop starts first,,
+time_to_second_increase_c,6,6,const,year in number,Year in which the effect of tree on crop starts second,,
+perc_max_first_increase_p,20,30,posnorm,%,percentage of the maximum yield reduction in the first year (or other time unit),,
+perc_max_second_increase_p,50,60,posnorm,%,percentage of the maximum yield reduction in the second year (or other time unit),,
+woody_benefit_shade_p,0.01,0.05,posnorm,%,effect of reducing heat stress on livestock performance [%],,
+woody_benefit_nutrition_p,0.01,0.03,posnorm,%,effect of nutritional benefits from woody species on livestock performance [%],,
+daily_dry_matter_intake_sheep_p,0.0015,0.002,posnorm,t/animal,amount of dry matter consumed by sheep daily,,https://ahdb.org.uk/knowledge-library/grass-allocation-feed-budgeting-wintering-at-grass
+daily_weight_gain_pasture_sheep_p,0.000167,0.0003,posnorm,t/animal,amount of dry matter consumed by sheep daily,multiplication between DM intake and feed efficinecy ,
+irrigation_123_p,0.5,1,posnorm,l/U,Water use in the frist three years of tree establishment [l/tree],"need to clarify if any amount of watering is done and which years, unlikely system would be installed",
+irrigation_annual_p,0.5,0.8,posnorm,l/U,Annual water use after the first three years [l/tree],"need to clarify if any amount of watering is done and which years, unlikely system would be installed",
+AF2_num_trees_c,180,180,const,U,Number of trees planted in three row AF system ,from Toms email 5m spacing,gets calculated within the code
+Nonmarket_ES_value_p,600,960,posnorm,£/ha/yr,monetary value of ES in AF system £/ ha/ y,Kay et al 2019,not used in this code
+per_market_price_p,0.5,3,posnorm,%,Percentage fluctuation in the market price of all products  [%],,not used in this code
+barley_dry_matter_content_p,0.5,0.9,posnorm,%,Average dry matter content of barley stubble [%],,not used in this code
+beans_dry_matter_content_p,0.5,0.9,posnorm,%,Average dry matter content of legume stubble [%],,not used in this code
+oats_dry_matter_content_p,0.5,0.9,posnorm,%,Average dry matter content of oat stubble  [%],,not used in this code
+cattle_feed_conversion_efficiency_p,0.1,0.2,posnorm,%,Efficiency of cattle in converting feed to live weight [%],,not used in this code
