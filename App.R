@@ -288,7 +288,7 @@ ui <- fluidPage(
                  column(width = 8,
                         align = "center",
                         h2(class = "app-title",
-                           "Holistic Decision Analysis for an Agrisilvicultural Agroforestry System")),
+                           "Holistic Decision Analysis for an Silvopastoral Agroforestry System")),
                  column(width = 2,
                         align = "left",
                         tags$a(href = "https://www.gartenbauwissenschaften.uni-bonn.de/", # Add URL here
