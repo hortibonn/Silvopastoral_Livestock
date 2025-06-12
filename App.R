@@ -74,34 +74,35 @@ admin_users <- c("Adrian", "Prajna", "Christine")
 country_states <-
   list(
     "None" = c("none"),
-    "Germany" = c("Baden-Württemberg", "Bavaria", "Berlin", "Brandenburg", "Bremen",
-                  "Hamburg", "Hesse", "Lower Saxony", "Mecklenburg-Vorpommern",
-                  "North Rhine-Westphalia", "Rhineland-Palatinate", "Saarland",
-                  "Saxony", "Saxony-Anhalt", "Schleswig-Holstein", "Thuringia"),
-    "Czech Republic" = c("Prague", "Central Bohemian", "South Bohemian", "Plzeň",
-                         "Karlovy Vary", "Ústí nad Labem", "Liberec", "Hradec Králové",
-                         "Pardubice", "Vysočina", "South Moravian", "Olomouc",
-                         "Zlín", "Moravian-Silesian"),
-    "Belgium" = c("Flanders", "Wallonia", "Brussels"),
-    "Bulgaria" = c("Blagoevgrad", "Burgas", "Varna"),
-    "Hungary" = c("Budapest", "Pest", "Csongrád"),
-    "Denmark" = c("North Jutland", "Central Jutland", "Southern Denmark"),
-    "Spain" = c("Andalusia", "Catalonia", "Madrid"),
-    "England" = c("Bedfordshire", "Berkshire", "Bristol", "Buckinghamshire",
-                  "Cambridgeshire", "Cheshire", "Cornwall", "Cumbria", "Derbyshire",
-                  "Devon", "Dorset", "Durham", "East Sussex", "Essex", "Gloucestershire",
-                  "Greater London", "Greater Manchester", "Hampshire", "Herefordshire",
-                  "Hertfordshire", "Isle of Wight", "Kent", "Lancashire",
-                  "Leicestershire", "Lincolnshire", "Merseyside", "Norfolk", "North Yorkshire",
-                  "Northamptonshire", "Northumberland", "Nottinghamshire", "Oxfordshire",
-                  "Rutland", "Shropshire", "Somerset", "South Yorkshire", "Staffordshire",
-                  "Suffolk", "Surrey", "Tyne and Wear", "Warwickshire", "West Midlands",
-                  "West Sussex", "West Yorkshire", "Wiltshire", "Worcestershire"),
-    "Scotland" = c("Edinburgh", "Glasgow", "Aberdeen"),
-    "Wales" = c("Cardiff", "Swansea", "Newport"),
-    "Northern Ireland" = c("Belfast", "Derry", "Lisburn"),
-    "France" = c("Île-de-France", "Auvergne-Rhône-Alpes", "Nouvelle-Aquitaine"),
-    "Italy" = c("Lombardy", "Lazio", "Campania")
+    # "Germany" = c("Baden-Württemberg", "Bavaria", "Berlin", "Brandenburg", "Bremen",
+    #               "Hamburg", "Hesse", "Lower Saxony", "Mecklenburg-Vorpommern",
+    #               "North Rhine-Westphalia", "Rhineland-Palatinate", "Saarland",
+    #               "Saxony", "Saxony-Anhalt", "Schleswig-Holstein", "Thuringia"),
+    # "Czech Republic" = c("Prague", "Central Bohemian", "South Bohemian", "Plzeň",
+    #                      "Karlovy Vary", "Ústí nad Labem", "Liberec", "Hradec Králové",
+    #                      "Pardubice", "Vysočina", "South Moravian", "Olomouc",
+    #                      "Zlín", "Moravian-Silesian"),
+    # "Belgium" = c("Flanders", "Wallonia", "Brussels"),
+    # "Bulgaria" = c("Blagoevgrad", "Burgas", "Varna"),
+    # "Hungary" = c("Budapest", "Pest", "Csongrád"),
+    # "Denmark" = c("North Jutland", "Central Jutland", "Southern Denmark"),
+    # "Spain" = c("Andalusia", "Catalonia", "Madrid"),
+    "England" = c("Any")
+    # , "Berkshire", "Bristol", "Buckinghamshire",
+    #               "Cambridgeshire", "Cheshire", "Cornwall", "Cumbria", "Derbyshire",
+    #               "Devon", "Dorset", "Durham", "East Sussex", "Essex", "Gloucestershire",
+    #               "Greater London", "Greater Manchester", "Hampshire", "Herefordshire",
+    #               "Hertfordshire", "Isle of Wight", "Kent", "Lancashire",
+    #               "Leicestershire", "Lincolnshire", "Merseyside", "Norfolk", "North Yorkshire",
+    #               "Northamptonshire", "Northumberland", "Nottinghamshire", "Oxfordshire",
+    #               "Rutland", "Shropshire", "Somerset", "South Yorkshire", "Staffordshire",
+    #               "Suffolk", "Surrey", "Tyne and Wear", "Warwickshire", "West Midlands",
+    #               "West Sussex", "West Yorkshire", "Wiltshire", "Worcestershire"),
+    # "Scotland" = c("Edinburgh", "Glasgow", "Aberdeen"),
+    # "Wales" = c("Cardiff", "Swansea", "Newport"),
+    # "Northern Ireland" = c("Belfast", "Derry", "Lisburn"),
+    # "France" = c("Île-de-France", "Auvergne-Rhône-Alpes", "Nouvelle-Aquitaine"),
+    # "Italy" = c("Lombardy", "Lazio", "Campania")
   )
 
 # Funding data per country and state and state ####
@@ -113,7 +114,7 @@ funding_data <-
         one_time_funding_schemes = c(),
         funding_onetime_values_named = setNames(c(),
                                                 c()),
-        funding_onetime_per_ha_schemes = c(),
+        funding_onetime_per_plan_schemes = c(),
         funding_onetime_per_tree_schemes = c(),
         funding_onetime_percentage_schemes = c(),
         annual_funding_schemes = c(),
@@ -121,7 +122,7 @@ funding_data <-
       )
     ),
     "England" = list(
-      "Northumberland" = list(
+      "Any" = list(
         # one-time
         one_time_funding_schemes = c(
           "Countryside Stewardship - PA4 Agroforestry [GBP/ha]",
@@ -130,69 +131,80 @@ funding_data <-
           "Tree guard (TE6) [GBP/guard/tree]",
           "Species Diversity Bonus (if more than 5 diff. species) [GBP/tree]",
           "Woodland Trust - MOREwoods Scheme (min. 0.5 ha woodland with 500+ trees) [% of initial costs]",
-          "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]"
+          "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]",
+          "Woodland Trust - Trees For Your Farm scheme (500+trees, for agroforestry schemes benefiting the business of productive farms + site visit & tree planting assessment) [% of initial costs]",
+          "Woodland Trust - Trees For Your Farm scheme [% of consultation costs]"
         ),
-        funding_onetime_values_named = setNames(c(1268.08, 5.40, 17.83, 3.95, 1.16, 0.75, 0.6),
-                                                c("Countryside Stewardship - PA4 Agroforestry [GBP/ha]",
+        funding_onetime_values_named = setNames(c(1268.08, 5.40, 17.83, 3.95, 1.16, 0.75, 0.6,0.01, 0.01),
+                                                c("Countryside Stewardship - PA4 Agroforestry [GBP/plan]",
                                                   "Countryside Stewardship - AF Woodland trees [GBP/tree]",
                                                   "Countryside Stewardship - AF Fruit trees [GBP/tree]",
                                                   "Tree guard (TE6) [GBP/guard/tree]",
                                                   "Species Diversity Bonus (if more than 5 diff. species) [GBP/tree]",
                                                   "Woodland Trust - MOREwoods Scheme (min. 0.5 ha woodland with 500+ trees) [% of initial costs]",
-                                                  "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]"
+                                                  "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]",
+                                                  "Woodland Trust - Trees For Your Farm scheme (500+trees, for agroforestry schemes benefiting the business of productive farms + site visit & tree planting assessment) [% of initial costs]",
+                                                  "Woodland Trust - Trees For Your Farm scheme [% of consultation costs]"
+                                                  
                                                 ) 
         ),
-        funding_onetime_per_ha_schemes = c("Countryside Stewardship - PA4 Agroforestry [GBP/ha]"),
+        funding_onetime_per_plan_schemes = c("Countryside Stewardship - PA4 Agroforestry [GBP/plan]"),
         funding_onetime_per_tree_schemes = c("Countryside Stewardship - AF Woodland trees [GBP/tree]",
                                              "Countryside Stewardship - AF Fruit trees [GBP/tree]",
                                              "Tree guard (TE6) [GBP/guard/tree]",
                                              "Species Diversity Bonus (if more than 5 diff. species) [GBP/tree]"
         ),
         funding_onetime_percentage_schemes = c("Woodland Trust - MOREwoods Scheme (min. 0.5 ha woodland with 500+ trees) [% of initial costs]",
-                                               "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]"
+                                               "Woodland Trust - MOREwoods Scheme with contractor (min. 1 ha woodland) [% of initial costs]",
+                                               "Woodland Trust - Trees For Your Farm scheme (500+trees, for agroforestry schemes benefiting the business of productive farms + site visit & tree planting assessment) [% of initial costs]",
+                                               "Woodland Trust - Trees For Your Farm scheme [% of consultation costs]"
         ),
         #annual
-        annual_funding_schemes = c("SFI Premium payment - low density AF on less sensitive land [GBP/ha/year]",
-                                   "SFI Premium payment - low density AF on more sensitive land [GBP/ha/year]",
-                                   "SFI Premium payment - medium density in-field AF [GBP/ha/year]",
-                                   "SFI Premium payment - high density in-field AF [GBP/ha/year]"
+        annual_funding_schemes = c("SFI Premium payment - very low density AF on less sensitive land [GBP/ha/year]",
+                                   "SFI Premium payment - low density AF on less sensitive land [GBP/ha/year]",
+                                   "Countryside Stewardship - very low density AF on more sensitive land [GBP/ha/year]",
+                                   "Countryside Stewardship - low density AF on more sensitive land [GBP/ha/year]",
+                                   "Countryside Stewardship - medium density in-field AF [GBP/ha/year]",
+                                   "Countryside Stewardship - high density in-field AF [GBP/ha/year]"
         ),
-        funding_yearly_values_named = setNames(c(385, 385, 595, 849),
-                                               c("SFI Premium payment - low density AF on less sensitive land [GBP/ha/year]",
-                                                 "SFI Premium payment - low density AF on more sensitive land [GBP/ha/year]",
-                                                 "SFI Premium payment - medium density in-field AF [GBP/ha/year]",
-                                                 "SFI Premium payment - high density in-field AF [GBP/ha/year]"
+        funding_yearly_values_named = setNames(c(248,385,248, 385, 595, 849),
+                                               c("SFI Premium payment - very low density AF on less sensitive land [GBP/ha/year]",
+                                                 "SFI Premium payment - low density AF on less sensitive land [GBP/ha/year]",
+                                                 "Countryside Stewardship - very low density AF on more sensitive land [GBP/ha/year]",
+                                                 "Countryside Stewardship - low density AF on more sensitive land [GBP/ha/year]",
+                                                 "Countryside Stewardship - medium density in-field AF [GBP/ha/year]",
+                                                 "Countryside Stewardship - high density in-field AF [GBP/ha/year]"
                                                ) 
         )
-      ),
+      )
       # not real subsidy schemes!!!
-      "Kent" = list(
-        one_time_funding_schemes = c("Kent Scheme - Tree Planting [GBP/tree]",
-                                     "Kent Scheme - Land Preparation [GBP/ha]"),
-        funding_onetime_values_named = setNames(c(10, 500),
-                                                c("Kent Scheme - Tree Planting [GBP/tree]",
-                                                  "Kent Scheme - Land Preparation [GBP/ha]")),
-        funding_onetime_per_ha_schemes = c("Kent Scheme - Land Preparation [GBP/ha]"),
-        funding_onetime_per_tree_schemes = c("Kent Scheme - Tree Planting [GBP/tree]"),
-        funding_onetime_percentage_schemes = c(),
-        annual_funding_schemes = c("Kent Annual Support [GBP/ha/year]" ),
-        funding_yearly_values_named = setNames(c(100),c("Kent Annual Support [GBP/ha/year]"))
-      )
-    ),
-    # Add more countries and states with their funding schemes here - T6.3
-    "Germany" = list(
-      "Bavaria" = list(one_time_funding_schemes = c("Bavaria Start-up Aid [EURO/ha]",
-                                                    "Bavaria Tree Grant [EURO/tree]" ),
-                       funding_onetime_values_named = setNames(c(800, 15),
-                                                               c( "Bavaria Start-up Aid [EURO/ha]",
-                                                                  "Bavaria Tree Grant [EURO/tree]")),
-                       funding_onetime_per_ha_schemes = c("Bavaria Start-up Aid [EURO/ha]"),
-                       funding_onetime_per_tree_schemes = c("Bavaria Tree Grant [EURO/tree]"),
-                       funding_onetime_percentage_schemes = c(),
-                       annual_funding_schemes = c("Bavaria Annual Payment [EURO/ha/year]"),
-                       funding_yearly_values_named = setNames(c(200),c("Bavaria Annual Payment [EURO/ha/year]") )
-      )
+      # "Kent" = list(
+      #   one_time_funding_schemes = c("Kent Scheme - Tree Planting [GBP/tree]",
+      #                                "Kent Scheme - Land Preparation [GBP/ha]"),
+      #   funding_onetime_values_named = setNames(c(10, 500),
+      #                                           c("Kent Scheme - Tree Planting [GBP/tree]",
+      #                                             "Kent Scheme - Land Preparation [GBP/ha]")),
+      #   funding_onetime_per_ha_schemes = c("Kent Scheme - Land Preparation [GBP/ha]"),
+      #   funding_onetime_per_tree_schemes = c("Kent Scheme - Tree Planting [GBP/tree]"),
+      #   funding_onetime_percentage_schemes = c(),
+      #   annual_funding_schemes = c("Kent Annual Support [GBP/ha/year]" ),
+      #   funding_yearly_values_named = setNames(c(100),c("Kent Annual Support [GBP/ha/year]"))
+      # )
     )
+    # Add more countries and states with their funding schemes here - T6.3
+    # "Germany" = list(
+    #   "Bavaria" = list(one_time_funding_schemes = c("Bavaria Start-up Aid [EURO/ha]",
+    #                                                 "Bavaria Tree Grant [EURO/tree]" ),
+    #                    funding_onetime_values_named = setNames(c(800, 15),
+    #                                                            c( "Bavaria Start-up Aid [EURO/ha]",
+    #                                                               "Bavaria Tree Grant [EURO/tree]")),
+    #                    funding_onetime_per_ha_schemes = c("Bavaria Start-up Aid [EURO/ha]"),
+    #                    funding_onetime_per_tree_schemes = c("Bavaria Tree Grant [EURO/tree]"),
+    #                    funding_onetime_percentage_schemes = c(),
+    #                    annual_funding_schemes = c("Bavaria Annual Payment [EURO/ha/year]"),
+    #                    funding_yearly_values_named = setNames(c(200),c("Bavaria Annual Payment [EURO/ha/year]") )
+    #   )
+    # )
     
   )
 
@@ -288,7 +300,7 @@ ui <- fluidPage(
                  column(width = 8,
                         align = "center",
                         h2(class = "app-title",
-                           "Holistic Decision Analysis for an Silvopastoral Agroforestry System")),
+                           "Holistic Decision Analysis for a Silvopastoral Agroforestry System")),
                  column(width = 2,
                         align = "left",
                         tags$a(href = "https://www.gartenbauwissenschaften.uni-bonn.de/", # Add URL here
@@ -309,7 +321,7 @@ ui <- fluidPage(
                    open = FALSE,
                    # Basic Information Panel
                    accordion_panel(
-                     title = "Basic Information",
+                     title = "Save / Load project",
                      icon = icon("info-circle"),
                      
                      ########### save load delete logic ##############
@@ -344,7 +356,7 @@ ui <- fluidPage(
                    ### Data entry by users ######
                    # Basic Farm and Decision Parameters Panel
                    accordion_panel(
-                     title = "Basic Farm and Decision Parameters",
+                     title = "General Parameters",
                      icon = icon("tractor"),
                      # System modulators and risks
                      h4("System Modulators"),
@@ -357,7 +369,7 @@ ui <- fluidPage(
                      sliderInput("var_CV_p", "Coefficient of Variation",
                                  min = 1, max = 50, value = c(5,10), step = 1),
                      br(),
-                     h4("Farm Details"),
+                     h4("Funding and Farm Details"),
                      # Dropdown menu of countries, state and funding schemes
                      selectInput("country", "Select Country:", choices = names(country_states), selected = NULL),
                      uiOutput("state_ui"),
@@ -597,7 +609,7 @@ ui <- fluidPage(
                      #             min = 1, max = 100, value = c(1,5)),
                    ),
                    accordion_panel(
-                     title = "Need clarification",
+                     title = "Other parameters", #"Need clarification",
                      icon = icon("question-circle"),
                      #h4("Need clarification"),
                      sliderInput("irrigation_sys_install_p", "?Cost of installing irrigation system[GBP]",
@@ -644,6 +656,23 @@ ui <- fluidPage(
       # Display plots of DA
       fluidRow(
         column(width = 4),
+        tags$h6(
+          "This app simulates the present value of converting a treeless arable field into a silvopastoral agroforestry system, developed based on an UK living lab at Mindrum, the design specifications were shared by Mr. Tom Fairfax",
+          tags$br(),
+          "Design 1: 2 strips of 200 m x 15 m of short rotation coppice with Salix spp. (particular interest in S. caprea) and a mixed native species tree guard area surrounding the strips. The strips are orientated southwest by northeast.",
+          tags$br(),
+          "Design 2: 3 strips of 300 m x 5 m of woody strips-oriented northwest by southeast along the slope with a wide variety of trees surrounded by a thick clumping of shrubby species also including Salix spp.",
+          tags$br(),
+          tags$br(),
+          "Use the tabs on the left to adjust variable ranges based on your local conditions or design goals (including choice of crop rotation and inculding animals.",
+          tags$br(),
+          tags$br(),
+          "Click ‘Run model’ to perform a Monte Carlo simulation using random combinations from your defined ranges.You can save/load inputs, and once the model runs, results will appear below and you can save these figures.",
+          tags$br(),
+          "We welcome your feedback and encourage you to suggest additional funding schemes for your region. Feel free to contact us at pkasargo@uni-bonn.de or afuelle1@uni-bonn.de"
+        ),
+        
+        
         #textOutput("display_version_1"),
         # Added a button to open the URL
         # actionButton("open_url", "Click here for latest info on Sustainable Farming Incentive"), 
@@ -654,7 +683,7 @@ ui <- fluidPage(
                       class = "my-btn")),
         column(width = 4)
       ),
-      h5('Probabilistic outcome distributions from Monte Carlo simulation for baseline and the decision intervention.'),
+      h5('Figure 1. Probabilistic outcome distributions from Monte Carlo simulation for baseline and the intervention options.'),
       plotOutput("distPlot"),
       p(
         'The graphs above compare the net present value (NPV) distributions
@@ -669,7 +698,7 @@ ui <- fluidPage(
       #   The y-axis shows the probability of occurrence, indicating the likelihood 
       #   of different NPV values. A higher value on the y-axis corresponds to a 
       #   greater probability of the associated NPV on the x-axis.'),
-      downloadButton("save_plot1", "Save Plot"),
+      downloadButton("save_plot1", "Download Figure 1"),
       br(), # blank line
       br(), # blank line
       # h5('2. Probabilistic outcome of the decision in terms of NPV over the simulation period.'),
@@ -696,7 +725,28 @@ ui <- fluidPage(
         interventions outperforming the baseline. The y-axis represents 
         probability density, with higher values indicating greater likelihood 
         of achieving the corresponding NPV difference.'),
-      downloadButton("save_plot3", "Save Plot") 
+      downloadButton("save_plot3", "Download Figure 2"), 
+      
+      br(), # blank line
+      br(), # blank line
+      
+      h5('Figure 3. Net Present Value (NPV) Outcomes with and without fudning for the two designs'),
+      plotOutput("distPlot4"),
+      p('Figure 3 shows the comparison of net present value (NPV) outcomes for the decision of different agroforestry designs with and without funding schemes'),
+      downloadButton("save_plot4", "Download Figure 3"), 
+      
+      
+      plotOutput("distPlot5"),
+      downloadButton("save_plot5", "Download Figure 4"), 
+      
+      plotOutput("distPlot6"),
+      downloadButton("save_plot6", "Download Figure 5"), 
+      
+      plotOutput("distPlot7"),
+      downloadButton("save_plot7", "Download Figure 6"), 
+      
+      plotOutput("distPlot8"),
+      downloadButton("save_plot8", "Download Figure 7"), 
     )
   )
 )
@@ -1179,7 +1229,7 @@ server <- function(input, output, session) {
   #   
   #   showNotification("Loading settings…", type = "message", duration = 4)
   # })
-
+  
   observeEvent(input$load, {
     selected_file <- file.path(current_user_dir(), input$version_select)
     req(file.exists(selected_file))
@@ -1276,7 +1326,7 @@ server <- function(input, output, session) {
   # Read variables from an internal CSV file
   # Validate CSV file before reading
   manual_variables <- reactive({
-    message("Accessing analyst estimates...")
+    #message("Accessing analyst estimates...")
     csv_path <- here("manual_variables_AF.csv")
     if (!file.exists(csv_path)) {
       stop("Error: CSV file not found at ", csv_path)
@@ -1296,7 +1346,7 @@ server <- function(input, output, session) {
   
   #### Animal estimates ####
   animal_estimates <- reactive({
-    message("Accessing animal estimates...")
+    #message("Accessing animal estimates...")
     # When number of animals is required #
     # cows_selected_c <- if("Cows" %in% input$animal_type) 1 else 0  # Purchase, Vet, Feed
     # sheep_selected_c <- if("Sheep" %in% input$animal_type) 1 else 0
@@ -1357,7 +1407,7 @@ server <- function(input, output, session) {
   
   # Crop rotation estimates####
   crop_estimates <- reactive({
-    message("Accessing crop estimates...")
+    #message("Accessing crop estimates...")
     treeless_system_crop_rotation_1_c <- if (input$treeless_crop_rotation == "rotation_1") 1 else 0
     treeless_system_crop_rotation_2_c <- if (input$treeless_crop_rotation == "rotation_2") 1 else 0 
     AF1_system_crop_rotation_1_c <- if (input$AF1_crop_rotation == "rotation_1") 1 else 0
@@ -1380,7 +1430,7 @@ server <- function(input, output, session) {
   
   #### Funding estimates ####
   funding_variables <- reactive({
-    message("Accessing funding estimates...")
+    #message("Accessing funding estimates...")
     country <- input$country
     state   <- input$state
     
@@ -1497,7 +1547,7 @@ server <- function(input, output, session) {
       distribution = rep("const", length(funding_parameters)),
       stringsAsFactors = FALSE
     )
-    message("Funding Variables Updated: ")
+    #message("Funding Variables Updated: ")
     #print(funding_variables_df)
     return(funding_variables_df)
   })
@@ -1505,7 +1555,7 @@ server <- function(input, output, session) {
   
   ######## Reactive UI data #####
   ui_estimates <- reactive({
-    message("Accessing user input estimates from te interface...")
+    #message("Accessing user input estimates from te interface...")
     exclude_inputs <- c("collapseSidebar", "save", "load", "delete", "confirm_delete", 
                         "admin_selected_user", "project_name", "version_select", "delete_version_select")
     
@@ -1545,11 +1595,11 @@ server <- function(input, output, session) {
     df5 <- funding_variables() # get funding variables
     
     req(df1, df2, df3, df4, df5)  # Ensure they are not NULL
-    print(names(df1))
-    print(names(df2))
-    print(names(df3))
-    print(names(df4))
-    print(names(df5))
+    # print(names(df1))
+    # print(names(df2))
+    # print(names(df3))
+    # print(names(df4))
+    # print(names(df5))
     df_combined <- rbind(df1, df3, df4, df5, df2)
     # Convert to numeric where needed
     df_combined$lower <- as.numeric(df_combined$lower)
@@ -1561,7 +1611,7 @@ server <- function(input, output, session) {
     write.csv(df_combined, "my_data.csv", row.names = FALSE, fileEncoding = "UTF-8")  
     # #manual_data <- read.csv(csv_path, stringsAsFactors = FALSE)
     # input_file <- read.csv("my_data.csv", stringsAsFactors = FALSE)
-    message("All input estimates successfully generated.")
+    #message("All input estimates successfully generated.")
     #print(as.estimate(df_combined))
     rownames(df_combined) <- 1:nrow(df_combined)
     df_combined <- df_combined[df_combined[1] != "0",] ### remove line with "0; 0; const" variable
@@ -1597,7 +1647,7 @@ server <- function(input, output, session) {
   # Create the function for mcSimualtion ####
   # This functions contains all the mathematical formulations for all three systems and their components
   AF_benefit <- function(x, varnames) {
-    message("Starting DA function...")
+    # message("Starting DA function...")
     Get_crop_indices <- function(Crop_rotation, Crop_name, n_years_c) {
       Rotation_length <- length(Crop_rotation)
       Full_rotation <- rep(Crop_rotation, length.out = n_years_c)
@@ -1960,8 +2010,12 @@ server <- function(input, output, session) {
     } else {
       AF1_total_one_time_funding <- AF1_total_one_time_funding_c
     }
-    AF1_tree_benefit <- AF1_biomass_timber_benefit + AF1_Nonmarket_ES_benefit + AF1_total_one_time_funding + AF1_total_annual_funding_c
-    AF1_farm_benefit <- AF1_biomass_timber_benefit + AF1_total_one_time_funding + AF1_total_annual_funding_c
+    AF1_farm_benefit <- AF1_biomass_timber_benefit + AF1_Nonmarket_ES_benefit + AF1_total_one_time_funding + AF1_total_annual_funding_c
+    #AF1_farm_benefit <- AF1_biomass_timber_benefit + AF1_total_one_time_funding + AF1_total_annual_funding_c
+    
+    #no funding
+    AF1_farm_benefit_nofund <- AF1_biomass_timber_benefit + AF1_Nonmarket_ES_benefit
+    #AF1_farm_benefit_nofund <- AF1_biomass_timber_benefit
     
     #woody benefit for livestock  
     AF1_total_woody_benefit <- rep(0, n_years_c) 
@@ -2010,6 +2064,8 @@ server <- function(input, output, session) {
       AF1_winter_wheat_benefit_CR1 <- vv(winter_wheat_value_p, var_CV_p, n_years_c) * AF1_winter_wheat_yield_CR1
       AF1_total_benefit_CR1 <- AF1_farm_benefit + AF1_herbal_ley_benefit_CR1 + AF1_winter_wheat_benefit_CR1
       
+      #no fund
+      AF1_total_benefit_CR1_nofund <- AF1_farm_benefit_nofund + AF1_herbal_ley_benefit_CR1 + AF1_winter_wheat_benefit_CR1
       
       #Costs:
       #Management costs
@@ -2039,6 +2095,9 @@ server <- function(input, output, session) {
       
       ##Bottom line AF system 1:
       AF1_bottom_line_benefit <- AF1_total_benefit_CR1 - AF1_total_cost_CR1
+      
+      #no fund
+      AF1_bottom_line_benefit_nofund <- AF1_total_benefit_CR1_nofund - AF1_total_cost_CR1
     }#Will only be calculated if user checks the box "Crop rotation 1" for AF 1
     
     #Crop rotation 2:#####----------------------------------------------------------
@@ -2108,9 +2167,15 @@ server <- function(input, output, session) {
       
       if(AF1_include_animals_c == 1){
         AF1_total_benefit_CR2 <- AF1_farm_benefit + AF1_livestock_benefit_CR2 + AF1_winter_wheat_benefit_CR2 + AF1_spring_barley_benefit + AF1_summer_beans_benefit + AF1_winter_oat_benefit
+        
+        #no fund
+        AF1_total_benefit_CR2_nofund <- AF1_farm_benefit_nofund + AF1_livestock_benefit_CR2 + AF1_winter_wheat_benefit_CR2 + AF1_spring_barley_benefit + AF1_summer_beans_benefit + AF1_winter_oat_benefit
       }
       if(AF1_include_animals_c == 0){
         AF1_total_benefit_CR2 <- AF1_farm_benefit + AF1_herbal_ley_benefit_CR2 + AF1_winter_wheat_benefit_CR2 + AF1_spring_barley_benefit + AF1_summer_beans_benefit + AF1_winter_oat_benefit
+        
+        #no fund
+        AF1_total_benefit_CR2_nofund <- AF1_farm_benefit_nofund + AF1_herbal_ley_benefit_CR2 + AF1_winter_wheat_benefit_CR2 + AF1_spring_barley_benefit + AF1_summer_beans_benefit + AF1_winter_oat_benefit
       }
       
       #Costs:
@@ -2171,6 +2236,9 @@ server <- function(input, output, session) {
       
       #Bottom line AF 1 system:
       AF1_bottom_line_benefit <- AF1_total_benefit_CR2 - AF1_total_cost_CR2
+      
+      # no fund
+      AF1_bottom_line_benefit_nofund <- AF1_total_benefit_CR2_nofund - AF1_total_cost_CR2
     }
     
     #AFGROFORESTRY SYSTEM 2 ########################################################
@@ -2347,6 +2415,10 @@ server <- function(input, output, session) {
     
     AF2_farm_benefit <- AF2_C_benefit + AF2_rowan_benefit + AF2_hazel_benefit + AF2_damson_benefit + AF2_total_annual_funding_c + AF2_total_one_time_funding #plus woody benefit to livestock in 'crop rotation portion'
     
+    #no fund
+    AF2_farm_benefit_nofund <- AF2_C_benefit + AF2_rowan_benefit + AF2_hazel_benefit + AF2_damson_benefit #plus woody benefit to livestock in 'crop rotation portion'
+    
+    
     #woody benefit for livestock  
     AF2_total_woody_benefit <- rep(0, n_years_c) 
     AF2_total_woody_benefit <- vv(woody_benefit_shade_p, var_CV_p, n_years_c) + vv(woody_benefit_nutrition_p, var_CV_p, n_years_c)+
@@ -2390,6 +2462,9 @@ server <- function(input, output, session) {
       
       AF2_total_benefit_CR1 <- AF2_farm_benefit + AF2_herbal_ley_benefit_CR1 + AF2_winter_wheat_benefit_CR1
       
+      #no fund
+      AF2_total_benefit_CR1_nofund <- AF2_farm_benefit_nofund + AF2_herbal_ley_benefit_CR1 + AF2_winter_wheat_benefit_CR1
+      
       #Costs:
       #Arable field management costs
       AF2_herbal_ley_management_cost <- rep(0, n_years_c) #includes: seed, insurance, fixed+variable machine cost (Values from GER available)
@@ -2418,6 +2493,9 @@ server <- function(input, output, session) {
       
       ##Bottom line AF system 1:
       AF2_bottom_line_benefit <- AF2_total_benefit_CR1 - AF2_total_cost_CR1
+      
+      #no fund
+      AF2_bottom_line_benefit_nofund <- AF2_total_benefit_CR1_nofund - AF2_total_cost_CR1
     }
     
     #Crop rotation 2:#####----------------------------------------------------------
@@ -2488,9 +2566,13 @@ server <- function(input, output, session) {
       
       if(AF2_include_animals_c == 1){
         AF2_total_benefit_CR2 <- AF2_farm_benefit + AF2_livestock_benefit_CR2 + AF2_winter_wheat_benefit_CR2 + AF2_spring_barley_benefit + AF2_summer_beans_benefit + AF2_winter_oat_benefit
+        # no fund
+        AF2_total_benefit_CR2_nofund <- AF2_farm_benefit_nofund + AF2_livestock_benefit_CR2 + AF2_winter_wheat_benefit_CR2 + AF2_spring_barley_benefit + AF2_summer_beans_benefit + AF2_winter_oat_benefit
       }
       if(AF2_include_animals_c == 0){
         AF2_total_benefit_CR2 <- AF2_farm_benefit + AF2_herbal_ley_benefit_CR2 + AF2_winter_wheat_benefit_CR2 + AF2_spring_barley_benefit + AF2_summer_beans_benefit + AF2_winter_oat_benefit
+        #no fund
+        AF2_total_benefit_CR2_nofund <- AF2_farm_benefit_nofund + AF2_herbal_ley_benefit_CR2 + AF2_winter_wheat_benefit_CR2 + AF2_spring_barley_benefit + AF2_summer_beans_benefit + AF2_winter_oat_benefit
       }
       
       #Costs:
@@ -2550,6 +2632,9 @@ server <- function(input, output, session) {
       
       #Bottom line AF 2 system:
       AF2_bottom_line_benefit <- AF2_total_benefit_CR2 - AF2_total_cost_CR2
+      
+      #no fund
+      AF2_bottom_line_benefit_nofund <- AF2_total_benefit_CR2_nofund - AF2_total_cost_CR2
     }
     
     #Calculating NPVs and Cash Flows####
@@ -2569,6 +2654,10 @@ server <- function(input, output, session) {
                               calculate_NPV = FALSE)#Cash flow of AF system
     AF1_cum_cash_flow <- cumsum(AF1_cash_flow) #Cumulative cash flow of AF system
     
+    #no fund
+    AF1_NPV_nofund <- discount(AF1_bottom_line_benefit_nofund, discount_rate=discount_rate_p,
+                               calculate_NPV = TRUE)#NVP of AF system
+    
     #AF System 2
     AF2_NPV <- discount(AF2_bottom_line_benefit, discount_rate=discount_rate_p,
                         calculate_NPV = TRUE)#NVP of AF system
@@ -2576,19 +2665,30 @@ server <- function(input, output, session) {
                               calculate_NPV = FALSE)#Cash flow of AF system
     AF2_cum_cash_flow <- cumsum(AF2_cash_flow) #Cumulative cash flow of AF system
     
+    #no fund
+    AF2_NPV_nofund <- discount(AF2_bottom_line_benefit_nofund, discount_rate=discount_rate_p,
+                               calculate_NPV = TRUE)#NVP of AF system
+    
     #Tradeoff (difference between AF system and treeless system)
     AF1_tradeoff_benefit <- AF1_bottom_line_benefit - Treeless_bottom_line_benefit
     #Tradeoff_benefit_farm <- AF_bottom_line_benefit_farm - Treeless_bottom_line_benefit
     
     AF1_NPV_tradeoff <- discount(AF1_tradeoff_benefit, discount_rate = discount_rate_p,
                                  calculate_NPV = TRUE )
+    AF1_tradeoff_benefit_nofund <- AF1_bottom_line_benefit_nofund - Treeless_bottom_line_benefit
+    AF1_NPV_tradeoff_nofund <- discount(AF1_tradeoff_benefit_nofund, discount_rate = discount_rate_p,
+                                        calculate_NPV = TRUE )
+    
     # NPV_tradeoff_farm <- discount(Tradeoff_benefit_farm, discount_rate = discount_rate_p,
     #                               calculate_NPV = TRUE )
     
     AF2_tradeoff_benefit <- AF2_bottom_line_benefit - Treeless_bottom_line_benefit
-    
     AF2_NPV_tradeoff <- discount(AF2_tradeoff_benefit, discount_rate = discount_rate_p,
                                  calculate_NPV = TRUE )
+    
+    AF2_tradeoff_benefit_nofund <- AF2_bottom_line_benefit_nofund - Treeless_bottom_line_benefit
+    AF2_NPV_tradeoff_nofund <- discount(AF2_tradeoff_benefit_nofund, discount_rate = discount_rate_p,
+                                        calculate_NPV = TRUE )
     
     
     #Defining what output variables the following Monte Carlo Simulation should create #####
@@ -2598,10 +2698,16 @@ server <- function(input, output, session) {
       NPV_Treeless_System = NPV_treeless_system,
       NPVtrade_off_AF1 = AF1_NPV_tradeoff,
       NPVtrade_off_AF2 = AF2_NPV_tradeoff,
-      Cashflow_AF1 = AF1_cash_flow,
-      Cashflow_AF2 = AF2_cash_flow,
-      Cumcashflow_AF1 = AF1_cum_cash_flow,
-      Cumcashflow_AF2 = AF2_cum_cash_flow,
+      
+      # NPV_nofund_Agroforestry_System1 = AF1_NPV_nofund,
+      # NPV_nofund_Agroforestry_System2 = AF2_NPV_nofund,
+      NPVtrade_off_nofund_AF1 = AF1_NPV_tradeoff_nofund,
+      NPVtrade_off_nofund_AF2 = AF2_NPV_tradeoff_nofund,
+      
+      Cash_flow_AF1 = AF1_cash_flow,
+      Cash_flow_AF2 = AF2_cash_flow,
+      Cumulative_cashflow_AF1 = AF1_cum_cash_flow,
+      Cumulative_cashflow_AF2 = AF2_cum_cash_flow,
       Cashflow_treeless = Treeless_cash_flow,
       Cumcashflow_treeless = Treeless_cum_cash_flow
     ))
@@ -2611,23 +2717,23 @@ server <- function(input, output, session) {
   mcSimulation_results <- eventReactive(input$run_simulation, {
     req(input_estimates())
     
-    # Debugging: Print structure of input estimates
-    print("Debug: Structure of input_estimates")
-    print(str(input_estimates()))
-    
-    # Debugging: Ensure as.estimate() is returning valid data
+    # # Debugging: Print structure of input estimates
+    # print("Debug: Structure of input_estimates")
+    # print(str(input_estimates()))
+    # 
+    # # Debugging: Ensure as.estimate() is returning valid data
     estimate_data <- as.estimate(input_estimates())
-    print("Debug: Structure of as.estimate(input_estimates())")
-    print(str(estimate_data))
-    
-    # Debugging: Ensure AF_benefit function is valid
-    print("Debug: Structure of AF_benefit function")
-    print(str(AF_benefit))
-    
-    # Debugging: Print number of simulations
-    print("Debug: num_simulations_c")
-    print(str(input$num_simulations_c))
-    
+    # print("Debug: Structure of as.estimate(input_estimates())")
+    # print(str(estimate_data))
+    # 
+    # # Debugging: Ensure AF_benefit function is valid
+    # print("Debug: Structure of AF_benefit function")
+    # print(str(AF_benefit))
+    # 
+    # # Debugging: Print number of simulations
+    # print("Debug: num_simulations_c")
+    # print(str(input$num_simulations_c))
+    # 
     # Run Monte Carlo simulation
     data <- 
       mcSimulation(
@@ -2662,6 +2768,16 @@ server <- function(input, output, session) {
         selected_cols[[prefix]] <- cols_with_prefix
       }
     }
+    
+    allnames <- setNames(c("NPV Agroforestry Design 1", "NPV Agroforestry Design 2", "NPV Treeless System",
+                           "NPV Decision AF Design 1", "NPV Decision AF Design 2",
+                           "NPV Decision AF Design 1 (no Fund)",  "NPV Decision AF Design 2 (no Fund)"),
+                         names(mc_output$y)[1:7])
+    selectednames <- selected_cols[[1]] %>% names()
+    y_axis_names <- allnames[selectednames]
+    # print(allnames)
+    # print(selectednames)
+    # print(y_axis_names)
     
     # Combine all selected columns into one data frame
     filtered_data <- bind_cols(selected_cols)
@@ -2720,12 +2836,13 @@ server <- function(input, output, session) {
           legend.position = "none") +
         scale_fill_manual(values = color_palette) +
         labs(
-          x = "Scenarios",
+          x = "Decision Options",
           y = "Outcome distribution [GBP/ha]") +
         coord_flip() +
         stat_boxplot(geom = "errorbar", width = 0.2) +
         #scale_y_continuous(breaks = seq(-75, max(stacked_data$values, na.rm = TRUE), by = 50)) +
-        geom_hline(yintercept = 0, linetype = "dashed", color = "red", linewidth = 0.5)
+        geom_hline(yintercept = 0, linetype = "dashed", color = "red", linewidth = 0.5) +
+        scale_x_discrete(labels=y_axis_names)
     }
     
     # if(plot_type == "density"){
@@ -2749,7 +2866,8 @@ server <- function(input, output, session) {
     #       x = "Outcome distribution [GBP/ha]",
     #       y = "") +
     #     #scale_x_continuous(breaks = seq(-75, max(stacked_data$values, na.rm = TRUE), by = 50)) +
-    #     geom_vline(xintercept = 0, linetype = "dashed", color = "red", size = 0.5)
+    #     geom_vline(xintercept = 0, linetype = "dashed", color = "red", size = 0.5) +
+    # scale_y_discrete(labels=y_axis_names)
     # }
     
     if(plot_type =="ridge"){
@@ -2776,7 +2894,8 @@ server <- function(input, output, session) {
           x = "Outcome distribution [GBP/ha]",
           y = "Scenarios") +
         #scale_x_continuous(breaks = seq(-75, max(stacked_data$values, na.rm = TRUE), by = 50)) +
-        geom_vline(xintercept = 0, linetype = "dashed", color = "red", size = 0.5)
+        geom_vline(xintercept = 0, linetype = "dashed", color = "red", size = 0.5) +
+        scale_y_discrete(labels=y_axis_names)
     }
     # Return the plot
     return(plot)
@@ -2784,8 +2903,9 @@ server <- function(input, output, session) {
   
   # Plot reactive plots using the plot function
   plot1 <- reactive({Plot_mc_output(mcSimulation_results(), "NPV_", "arable_area_c", "box", input_estimates) })
-  plot2 <- reactive({ Plot_mc_output(mcSimulation_results(), "NPVtrade_off_AF1", "arable_area_c", "density", input_estimates) })
-  plot3 <- reactive({Plot_mc_output(mcSimulation_results(), "NPVtrade_off", "arable_area_c", "ridge", input_estimates)})
+  #plot2 <- reactive({ Plot_mc_output(mcSimulation_results(), "NPVtrade_off_AF1", "arable_area_c", "density", input_estimates) })
+  plot3 <- reactive({Plot_mc_output(mcSimulation_results(), "NPVtrade_off_AF", "arable_area_c", "ridge", input_estimates)})
+  plot4 <- reactive({ Plot_mc_output(mcSimulation_results(), "NPVtrade_off_", "arable_area_c", "box", input_estimates) })
   
   ### Render the plots using the reactive expressions
   output$distPlot <- renderPlot({
@@ -2793,15 +2913,81 @@ server <- function(input, output, session) {
     plot1()
   })
   
-  output$distPlot2 <- renderPlot({
-    req(mcSimulation_results())
-    plot2()
-  })
+  # output$distPlot2 <- renderPlot({
+  #   req(mcSimulation_results())
+  #   plot2()
+  #})
   
   output$distPlot3 <- renderPlot({
     req(mcSimulation_results())
     plot3()
   })
+  
+  output$distPlot4 <- renderPlot({
+    req(mcSimulation_results())
+    plot4()
+  })
+  
+  
+  
+  
+  
+  plot5 <- reactive({ decisionSupport::plot_cashflow(
+    mcSimulation_results(), "Cash_flow_AF1",
+    x_axis_name = "",
+    y_axis_name = "Annual cash-flow from Agroforestry (€)",
+    color_25_75 = "navajowhite",
+    color_5_95 = "green4",
+    color_median = "darkblue",
+    facet_labels = "")
+  })
+  output$distPlot5 <- renderPlot({
+    req(mcSimulation_results())
+    plot5()
+  })
+  
+  plot6 <- reactive({ decisionSupport::plot_cashflow(
+    mcSimulation_results(), "Cash_flow_AF2",
+    x_axis_name = "",
+    y_axis_name = "Annual cash-flow from Agroforestry (€)",
+    color_25_75 = "navajowhite",
+    color_5_95 = "green4",
+    color_median = "darkblue",
+    facet_labels = "")
+  })
+  output$distPlot6 <- renderPlot({
+    req(mcSimulation_results())
+    plot6()
+  })
+
+  plot7 <- reactive({ decisionSupport::plot_cashflow(
+    mcSimulation_results(), "Cumulative_cashflow_AF1",
+    x_axis_name = "",
+    y_axis_name = "Cumulative cash-flow from Agroforestry (€)",
+    color_25_75 = "navajowhite",
+    color_5_95 = "green4",
+    color_median = "darkblue",
+    facet_labels = "")
+  })
+  output$distPlot7 <- renderPlot({
+    req(mcSimulation_results())
+    plot7()
+  })
+
+  plot8 <- reactive({ decisionSupport::plot_cashflow(
+    mcSimulation_results(), "Cumulative_cashflow_AF2",
+    x_axis_name = "",
+    y_axis_name = "Cumulative cash-flow from Agroforestry (€)",
+    color_25_75 = "navajowhite",
+    color_5_95 = "green4",
+    color_median = "darkblue",
+    facet_labels = "")
+  })
+  output$distPlot8 <- renderPlot({
+    req(mcSimulation_results())
+    plot8()
+  })
+  
   
   ### Helper function to create download handlers
   createDownloadHandler <- function(plot_reactive, filename_prefix) {
@@ -2818,9 +3004,15 @@ server <- function(input, output, session) {
   }
   
   ### Create download handlers for each plot
-  output$save_plot1 <- createDownloadHandler(plot1, "Plot_comparison_outcome_")
+  output$save_plot1 <- createDownloadHandler(plot1, "Comparison_NPV_outcome_")
   # output$save_plot2 <- createDownloadHandler(plot2, "Plot_decision_outcome_")
-  output$save_plot3 <- createDownloadHandler(plot3, "Probabilistic_outcome_")
+  output$save_plot3 <- createDownloadHandler(plot3, "Probabilistic_decision_outcome_")
+  output$save_plot4 <- createDownloadHandler(plot4, "Comparison_NPV_NoFund_")
+  
+  output$save_plot5 <- createDownloadHandler(plot5, "Cashflow 1")
+  output$save_plot6 <- createDownloadHandler(plot6, "Cashflow 2")
+  output$save_plot7 <- createDownloadHandler(plot7, "Cumulative Cashflow 1")
+  output$save_plot8 <- createDownloadHandler(plot8, "Cumulative Cashflow 2")
 }
 
 # Run the Shiny app
