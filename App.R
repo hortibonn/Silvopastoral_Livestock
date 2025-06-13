@@ -735,17 +735,42 @@ ui <- fluidPage(
       p('Figure 3 shows the comparison of net present value (NPV) outcomes for the decision of different agroforestry designs with and without funding schemes'),
       downloadButton("save_plot4", "Download Figure 3"), 
       
-      
+      h5("Figure 4. Annual cash-flow of the agroforestry design 1"),
       plotOutput("distPlot5"),
+      p('Figure shows how annual cash-flow from an agroforestry intervention is expected to evolve, 
+        based on a probabilistic simulation. The shaded areas represent uncertainty ranges (from lower to upper quantiles), 
+        while the blue line shows the median outcome (expressed in €). While early years may involve negative cash flow, 
+        profitability tends to improve over time, with increasing stability. The graph highlights the long-term financial potential and 
+        risk spread of adopting agroforestry practices.'),
       downloadButton("save_plot5", "Download Figure 4"), 
       
+      h5("Figure 6. Cumulative cash-flow of the agroforestry design 1"),
       plotOutput("distPlot6"),
+      p("Figure illustrates how total cash-flow (expressed in €) accumulates over 
+        time from the agroforestry intervention, based on a range of simulated outcomes. 
+        The shaded areas represent uncertainty (spread of possible results), 
+        and the blue line indicates the median trajectory. Cumulative returns grow steadily over time, 
+        showing the long-term profitability potential of agroforestry. Despite initial variability, 
+        the system trends positively, reinforcing the case for agroforestry as a viable financial investment over the long run."),
       downloadButton("save_plot6", "Download Figure 5"), 
       
+      h5("Figure 7. Annual cash-flow of the agroforestry design 2"),
       plotOutput("distPlot7"),
+      p('Figure shows how annual cash-flow from an agroforestry intervention is expected to evolve, 
+        based on a probabilistic simulation. The shaded areas represent uncertainty ranges (from lower to upper quantiles), 
+        while the blue line shows the median outcome (expressed in €). While early years may involve negative cash flow, 
+        profitability tends to improve over time, with increasing stability. The graph highlights the long-term financial potential and 
+        risk spread of adopting agroforestry practices.'),
       downloadButton("save_plot7", "Download Figure 6"), 
       
+      h5("Figure 8. Cumulative cash-flow of the agroforestry design 2"),
       plotOutput("distPlot8"),
+      p("Figure illustrates how total cash-flow (expressed in €) accumulates over 
+        time from the agroforestry intervention, based on a range of simulated outcomes. 
+        The shaded areas represent uncertainty (spread of possible results), 
+        and the blue line indicates the median trajectory. Cumulative returns grow steadily over time, 
+        showing the long-term profitability potential of agroforestry. Despite initial variability, 
+        the system trends positively, reinforcing the case for agroforestry as a viable financial investment over the long run."),
       downloadButton("save_plot8", "Download Figure 7"), 
     )
   )
@@ -1608,7 +1633,7 @@ server <- function(input, output, session) {
     if (any(is.na(df_combined$lower)) || any(is.na(df_combined$upper))) {
       stop("Error: NA values found in 'lower' or 'upper' columns.")
     }
-    write.csv(df_combined, "my_data.csv", row.names = FALSE, fileEncoding = "UTF-8")  
+    # write.csv(df_combined, "my_data.csv", row.names = FALSE, fileEncoding = "UTF-8")  
     # #manual_data <- read.csv(csv_path, stringsAsFactors = FALSE)
     # input_file <- read.csv("my_data.csv", stringsAsFactors = FALSE)
     #message("All input estimates successfully generated.")
