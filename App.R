@@ -214,9 +214,11 @@ ui <- fluidPage(
   theme = bs_theme(version = 5,
                    bootswatch = 'flatly',
                    base_font = font_google("Roboto")), 
-  # tags$img(src = "data/images/ReFOREST_logo_horizontal.jpg"),
-  # Include custom CSS for the scroll bar and accordion styling
+  
+  # Head: add title for browser tab and favicon + custom CSS
   tags$head(
+    tags$title("Holistic Decision Analysis Tool"),  # Browser tab title
+    tags$link(rel = "shortcut icon", href = "INRES.png"),  # Optional favicon
     tags$style(HTML("
       /* Custom scrollbar styling */
       ::-webkit-scrollbar {
@@ -235,8 +237,6 @@ ui <- fluidPage(
         
       /* Header styling */
       .app-header {
-      /*background: linear-gradient(135deg, #1E90FF, #00FA9A, #FFD700); */ /* light bue to light green to gold */
-     /* background: linear-gradient(135deg, #32CD32, #228B22, #006400);  LimeGreen to ForestGreen to DarkGreen */
         background-color:#228B22;
         color: white;
         padding: 15px 0;
@@ -263,54 +263,41 @@ ui <- fluidPage(
       .accordion-button:focus {
         box-shadow: none;
       }
+
       .my-btn {
         display: block;
         text-align: center;
         background: #238a21; 
-    /*  rgb(241 119 65 / 75%); */
-    /*  width: 50%; */
-    /*  height: 100%; */
         color: white;
-    /*  transform: translateX(-50%); */
-    /*  left: 50%; */
-    /*  font-size: 3rem; */
         border-radius: 20px;
         position: relative;
         margin-top: 25px;
         margin-bottom: 25px;
       }
-     "))
+    "))
   ),
-  # Responsive Layout with Animated Width
-  # layout_column_wrap(
-  #   width = "200px",
-  #   anim_width("100%", "67%"),  # Smooth resizing transition
-  # Application title
-  titlePanel(
-    div(class = "app-header",
-        # Logos column
-        fluidRow(column(width = 2,
-                        align = "right",
-                        tags$a(href = "https://agroreforest.eu/", # Add URL here
-                               tags$img(src = "ReFOREST_logo_horizontal_transparent.png", 
-                                        style = "max-width: 100%; height: auto;"
-                                        #height = "70px"
-                               ),
-                               target="_blank")),
-                 column(width = 8,
-                        align = "center",
-                        h2(class = "app-title",
-                           "Holistic Decision Analysis for a Silvopastoral Agroforestry System")),
-                 column(width = 2,
-                        align = "left",
-                        tags$a(href = "https://www.gartenbauwissenschaften.uni-bonn.de/", # Add URL here
-                               tags$img(src = "UniBonnHortiBonn_logo_transparent.png",
-                                        style = "max-width: 100%; height: auto;"
-                                        #height = "100px"
-                               ),
-                               target="_blank")),
-                 windowTitle = "MyPage")
-    )),
+  
+  # Custom header layout (not using titlePanel)
+  div(class = "app-header",
+      fluidRow(
+        column(width = 2, align = "right",
+               tags$a(href = "https://agroreforest.eu/", target = "_blank",
+                      tags$img(src = "ReFOREST_logo_horizontal_transparent.png", 
+                               style = "max-width: 100%; height: auto;")
+               )
+        ),
+        column(width = 8, align = "center",
+               h2(class = "app-title",
+                  "Holistic Decision Analysis for a Silvopastoral Agroforestry System")
+        ),
+        column(width = 2, align = "left",
+               tags$a(href = "https://www.gartenbauwissenschaften.uni-bonn.de/", target = "_blank",
+                      tags$img(src = "UniBonnHortiBonn_logo_transparent.png", 
+                               style = "max-width: 100%; height: auto;")
+               )
+        )
+      )
+  ),
   sidebarLayout(
     sidebarPanel(width = 4,
                  # style = "height: 100vh; overflow-y: auto",
