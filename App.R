@@ -660,7 +660,7 @@ ui <- fluidPage(
       fluidRow(
         column(width = 4),
         tags$h6(
-          "This app simulates the present value of converting a treeless arable field into a silvopastoral agroforestry system, developed based one of the UK living lab at Mindrum, the design specifications were shared by Mr. Tom Fairfax",
+          "This app simulates the present value of converting a treeless arable field into a silvopastoral agroforestry system, developed based on one of the UK living labs at Mindrum, the design specifications were shared by Mr. Tom Fairfax",
           tags$br(),
           "Design 1: 2 strips of 200 m x 15 m of short rotation coppice with Salix spp. (particular interest in", 
           tags$i("S. caprea"),
@@ -675,7 +675,8 @@ ui <- fluidPage(
           tags$br(),
           "Click ‘Run model’ to perform a Monte Carlo simulation using random combinations from your defined ranges. You can save/load inputs, and once the model runs, results will appear below and you can save these figures.",
           tags$br(),
-          "We welcome your feedback and encourage you to suggest additional funding schemes for your region. Feel free to contact us at pkasargo@uni-bonn.de or afuelle1@uni-bonn.de"
+          "We welcome your feedback and encourage you to suggest additional funding schemes for your region. Feel free to contact",
+          tags$a(href = "mailto:pkasargo@uni-bonn.de", "Prajna Kasargodu Anebagilu"), "or", tags$a(href = "mailto:afuelle1@uni-bonn.de", "Adrain Fuelle")
         ),
         
         
