@@ -662,7 +662,9 @@ ui <- fluidPage(
         tags$h6(
           "This app simulates the present value of converting a treeless arable field into a silvopastoral agroforestry system, developed based one of the UK living lab at Mindrum, the design specifications were shared by Mr. Tom Fairfax",
           tags$br(),
-          "Design 1: 2 strips of 200 m x 15 m of short rotation coppice with Salix spp. (particular interest in", tags$i("S. caprea") "and a mixed native species tree guard area surrounding the strips. The strips are orientated southwest by northeast.",
+          "Design 1: 2 strips of 200 m x 15 m of short rotation coppice with Salix spp. (particular interest in", 
+          tags$i("S. caprea"),
+          "and a mixed native species tree guard area surrounding the strips. The strips are orientated southwest by northeast.",
           tags$br(),
           "Design 2: 3 strips of 300 m x 5 m of woody strips-oriented northwest by southeast along the slope with a wide variety of trees surrounded by a thick clumping of shrubby species also including *Salix spp*.",
           tags$br(),
