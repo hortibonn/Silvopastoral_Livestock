@@ -290,6 +290,22 @@ ui <- fluidPage(
                h2(class = "app-title",
                   "Holistic Decision Analysis for a Silvopastoral Agroforestry System")
         ),
+        tags$style(HTML("
+    /* Scroll wrapper: scrolls horizontally *and* vertically only when needed */
+    .scroll-xy {
+      overflow-x: auto;                 /* left–right scroll  */
+      overflow-y: auto;                 /* top–bottom scroll  */
+      -webkit-overflow-scrolling: touch;/* smooth on iOS      */
+      max-height: 80vh;                 /* optional: stop it taking more than
+                                         80 % of the viewport height       */
+  }
+  /* Keep any Shiny plot inside that wrapper from shrinking */
+  .scroll-xy .shiny-plot-output {
+    min-width: 900px;                 /* choose your desktop width */
+  }
+                    ")
+               )
+  ),
         column(width = 2, align = "left",
                tags$a(href = "https://www.gartenbauwissenschaften.uni-bonn.de/", target = "_blank",
                       tags$img(src = "UniBonnHortiBonn_logo_transparent.png", 
