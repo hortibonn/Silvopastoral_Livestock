@@ -789,7 +789,7 @@ ui <- fluidPage(
                   tags$a("Disclaimer", href = "https://agroreforest.eu/reforest-tools-disclaimer/",
                 target = "_blank"),
                      " | ",  
-                tags$a("View Source", href = "https://github.com/hortibonn/Fruit_Honey_Agroforestry/",
+                tags$a("View Source", href = "https://github.com/hortibonn/Silvopastoral_Livestock/",
                 target = "_blank")
                   ),
                         )
@@ -3069,4 +3069,5 @@ server <- function(input, output, session) {
 
 # Run the Shiny app
 shinyApp(ui, server)
+
 
