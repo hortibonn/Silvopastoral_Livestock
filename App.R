@@ -794,9 +794,7 @@ ui <- fluidPage(
                   ),
                         )
                     ),
-                        
-                        tags$a("Disclaimer", href = "https://agroreforest.eu/reforest-tools-disclaimer/",
-                target = "_blank")
+
                         )
                     ),
     )
@@ -3069,5 +3067,6 @@ server <- function(input, output, session) {
 
 # Run the Shiny app
 shinyApp(ui, server)
+
 
 
