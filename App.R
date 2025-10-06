@@ -13,6 +13,11 @@ if (!requireNamespace("shiny", quietly = TRUE)) {
 }
 library(shiny)
 
+if (!requireNamespace("waiter", quietly = TRUE)) {
+  install.packages("waiter")
+}
+library(waiter)
+
 if (!requireNamespace("bslib", quietly = TRUE)) {
   install.packages("bslib")
 }
@@ -213,7 +218,9 @@ funding_data <-
 ui <- fluidPage(
   theme = bs_theme(version = 5,
                    bootswatch = 'flatly',
-                   base_font = font_google("Roboto")), 
+                   base_font = font_google("Roboto")),
+  
+  use_waiter(),
   
   # Head: add title for browser tab and favicon + custom CSS
   tags$head(
@@ -2764,6 +2771,14 @@ server <- function(input, output, session) {
   mcSimulation_results <- eventReactive(input$run_simulation, {
     req(input_estimates())
     
+    waiter_show(
+      html = tagList(
+        spin_fading_circles(),
+        "Running Model and generating Plots ..."
+      ),
+      color = "rgba(0, 0, 0, 0.8)"
+    )
+    
     # # Debugging: Print structure of input estimates
     # print("Debug: Structure of input_estimates")
     # print(str(input_estimates()))
@@ -2794,6 +2809,10 @@ server <- function(input, output, session) {
     if (!dir.exists(dir_temp)) dir.create(dir_temp)
     saveRDS(data,
             paste0(dir_temp,"/mcResults_debug.rds"))
+    
+    # Hide AFTER dependent outputs have re-rendered
+    session$onFlushed(function() waiter_hide(), once = TRUE)
+    ok <- TRUE
     
     data
   })
